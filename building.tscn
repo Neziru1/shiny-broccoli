@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2fl6umfkk85k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqn35"]
+size = Vector3(2.5, 5, 1)
+
+[node name="building" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_rqn35")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D/CollisionShape3D"]
+size = Vector3(5, 5, 1)
+metadata/_edit_lock_ = true
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.28206)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+shape = SubResource("BoxShape3D_rqn35")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D2/CollisionShape3D"]
+size = Vector3(5, 5, 1)
+metadata/_edit_lock_ = true
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(0.0439863, -0.0155235, 0.998912, -0.0114691, 0.999806, 0.0160424, -0.998966, -0.0121623, 0.0437996, 2.19862, 0, 2.20665)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+shape = SubResource("BoxShape3D_rqn35")
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D3/CollisionShape3D"]
+size = Vector3(5, 5, 1)
+metadata/_edit_lock_ = true
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(0.0439863, -0.0155235, 0.998912, -0.0114691, 0.999806, 0.0160424, -0.998966, -0.0121623, 0.0437996, -2.32718, 0, 2.20665)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 5.23869e-10, -1.49012e-08, 1.62981e-09, 1, -1.26511, -0.0232112, 0.542121)
+shape = SubResource("BoxShape3D_rqn35")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RigidBody3D4/CollisionShape3D"]
+size = Vector3(2.5, 5, 1)
+metadata/_edit_lock_ = true

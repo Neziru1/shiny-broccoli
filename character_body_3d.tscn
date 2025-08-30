@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhjgn2eom40i1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bu0v1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bu0v1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iwpo4"]
+size = Vector3(0.5, 0.5, 2)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bu0v1"]
+gravity = Vector3(0, 0, 0)
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="MeshTexture" id="MeshTexture_iwpo4"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fb3t6"]
+albedo_color = Color(1, 0.99227, 0.658224, 1)
+albedo_texture = SubResource("MeshTexture_iwpo4")
+disable_receive_shadows = true
+shadow_to_opacity = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_vd578"]
+material = SubResource("ORMMaterial3D_fb3t6")
+size = Vector2(0.5, 0.5)
+center_offset = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="Skin" id="Skin_c7tqt"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26542, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bu0v1")
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233575, 0.870643, 0.336259)
+
+[node name="view_x" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86, 0, -1.5)
+shape = SubResource("SphereShape3D_bu0v1")
+spring_length = -1.5
+
+[node name="view_y" type="Node3D" parent="view_x"]
+
+[node name="RayCast3D" type="RayCast3D" parent="view_x"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.932479, -2.17261)
+debug_shape_thickness = 5
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35896, -5.08246)
+gizmo_extents = 0.6
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436342, -1.52255)
+shape = SubResource("BoxShape3D_iwpo4")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0859368, 0.477085, -2.94646)
+emitting = false
+amount = 1
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_bu0v1")
+draw_pass_1 = SubResource("QuadMesh_vd578")
+draw_skin = SubResource("Skin_c7tqt")
